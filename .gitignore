@@ -1,0 +1,20 @@
+# Next.js
+.next/
+out/
+node_modules/
+
+# Environment
+.env.local
+.env*.local
+
+# Data
+data/
+
+# Old PHP files
+vendor/
+composer.phar
+composer.lock
+
+# OS
+.DS_Store
+Thumbs.db

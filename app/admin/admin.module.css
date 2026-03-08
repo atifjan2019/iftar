@@ -1,0 +1,381 @@
+:root {
+    --gold: #D4AF37;
+    --gold-light: #F4E5A3;
+    --emerald: #0A6847;
+    --emerald-deep: #054A31;
+    --bg-dark: #0A0F0D;
+    --bg-section: #0D1512;
+    --bg-card: #132820;
+    --text-primary: #F5F1E8;
+    --text-secondary: #B8C4BE;
+    --text-muted: #7A8A82;
+    --border: rgba(212, 175, 55, 0.15);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --transition: 0.3s ease;
+}
+
+/* Login Screen */
+.loginScreen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(10, 104, 71, 0.2) 0%, transparent 60%),
+        var(--bg-dark);
+}
+
+.loginCard {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 48px 40px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+}
+
+.loginTitle {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.loginTitle span {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.loginSubtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+}
+
+.loginInput {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    margin-bottom: 16px;
+    transition: var(--transition);
+}
+
+.loginInput:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.loginButton {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--emerald), var(--emerald-deep));
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid rgba(10, 104, 71, 0.5);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.loginButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(10, 104, 71, 0.3);
+}
+
+.loginError {
+    color: #E74C3C;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+}
+
+/* Dashboard */
+.dashboard {
+    min-height: 100vh;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Top Bar */
+.topbar {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.topbarTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.topbarTitle span {
+    color: var(--gold);
+}
+
+.topbarActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btnRefresh,
+.btnLogout,
+.btnExport {
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.btnRefresh {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--gold);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.btnRefresh:hover {
+    background: rgba(212, 175, 55, 0.2);
+}
+
+.btnLogout {
+    background: rgba(231, 76, 60, 0.1);
+    color: #E74C3C;
+    border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.btnLogout:hover {
+    background: rgba(231, 76, 60, 0.2);
+}
+
+.btnExport {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--gold);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.btnExport:hover {
+    background: rgba(212, 175, 55, 0.2);
+}
+
+/* Dashboard Content */
+.dashboardContent {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+/* Stats Cards */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.statCard {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.statCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--emerald));
+}
+
+.statNumber {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+.statLabel {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+/* Table */
+.tableContainer {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.tableHeader {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tableHeader h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.searchInput {
+    padding: 8px 14px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    width: 250px;
+    transition: var(--transition);
+}
+
+.searchInput:focus {
+    border-color: var(--gold);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead th {
+    text-align: left;
+    padding: 14px 24px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--border);
+}
+
+.table tbody td {
+    padding: 14px 24px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.table tbody tr {
+    transition: var(--transition);
+}
+
+.table tbody tr:hover {
+    background: rgba(212, 175, 55, 0.03);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.ticketBadge {
+    display: inline-block;
+    padding: 4px 10px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+}
+
+.noData {
+    text-align: center;
+    padding: 60px 24px;
+    color: var(--text-muted);
+}
+
+.noData svg {
+    margin-bottom: 16px;
+    opacity: 0.4;
+}
+
+.noData p {
+    font-size: 1rem;
+}
+
+.lastUpdated {
+    text-align: center;
+    padding: 16px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .tableHeader {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .searchInput {
+        width: 100%;
+    }
+
+    .dashboardContent {
+        padding: 20px 16px;
+    }
+
+    .table thead th,
+    .table tbody td {
+        padding: 10px 14px;
+        font-size: 0.8rem;
+    }
+
+    .loginCard {
+        padding: 32px 24px;
+    }
+}
