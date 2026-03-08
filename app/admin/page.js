@@ -14,6 +14,8 @@ export default function AdminPage() {
     const [lastUpdated, setLastUpdated] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [storedPassword, setStoredPassword] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const perPage = 10;
 
     // Check session on mount
     useEffect(() => {
@@ -186,6 +188,9 @@ export default function AdminPage() {
 
     // DASHBOARD
     const sortedRegistrations = [...filteredRegistrations].reverse();
+    const totalPages = Math.max(1, Math.ceil(sortedRegistrations.length / perPage));
+    const safePage = Math.min(currentPage, totalPages);
+    const paginatedRegistrations = sortedRegistrations.slice((safePage - 1) * perPage, safePage * perPage);
 
     return (
         <div className={styles.dashboard}>
@@ -254,7 +259,8 @@ export default function AdminPage() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {sortedRegistrations.map((reg, index) => {
+                                {paginatedRegistrations.map((reg, index) => {
+                                    const globalIndex = (safePage - 1) * perPage + index;
                                     const date = reg.registeredAt
                                         ? new Date(reg.registeredAt).toLocaleDateString('en-GB', {
                                             day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit',
@@ -262,7 +268,7 @@ export default function AdminPage() {
                                         : 'N/A';
                                     return (
                                         <tr key={reg.ticketId || index}>
-                                            <td style={{ color: 'var(--text-muted)' }}>{filteredRegistrations.length - index}</td>
+                                            <td style={{ color: 'var(--text-muted)' }}>{sortedRegistrations.length - globalIndex}</td>
                                             <td style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{escapeHtml(reg.name)}</td>
                                             <td>{escapeHtml(reg.phone)}</td>
                                             <td>{escapeHtml(reg.email)}</td>
@@ -282,6 +288,28 @@ export default function AdminPage() {
                                 })}
                             </tbody>
                         </table>
+                    )}
+
+                    {sortedRegistrations.length > perPage && (
+                        <div className={styles.pagination}>
+                            <button
+                                className={styles.paginationBtn}
+                                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                disabled={safePage <= 1}
+                            >
+                                ← Previous
+                            </button>
+                            <span className={styles.paginationInfo}>
+                                Page {safePage} of {totalPages}
+                            </span>
+                            <button
+                                className={styles.paginationBtn}
+                                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                                disabled={safePage >= totalPages}
+                            >
+                                Next →
+                            </button>
+                        </div>
                     )}
 
                     {lastUpdated && <div className={styles.lastUpdated}>{lastUpdated}</div>}
