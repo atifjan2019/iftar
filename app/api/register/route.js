@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { addRegistration } from '@/lib/data';
 import { sendTicketEmail } from '@/lib/email';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request) {
     try {
         const body = await request.json();
