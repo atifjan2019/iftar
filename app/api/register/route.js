@@ -67,8 +67,11 @@ export async function POST(request) {
         });
     } catch (error) {
         console.error('Registration error:', error);
+        const message = error.message?.includes('not configured')
+            ? 'Database not configured. Please contact the organizer.'
+            : 'Server error. Please try again.';
         return NextResponse.json(
-            { success: false, message: 'Server error. Please try again.' },
+            { success: false, message, error: error.message },
             { status: 500 }
         );
     }
