@@ -1,20 +1,4 @@
-:root {
-    --gold: #D4AF37;
-    --gold-light: #F4E5A3;
-    --emerald: #0A6847;
-    --emerald-deep: #054A31;
-    --bg-dark: #0A0F0D;
-    --bg-section: #0D1512;
-    --bg-card: #132820;
-    --text-primary: #F5F1E8;
-    --text-secondary: #B8C4BE;
-    --text-muted: #7A8A82;
-    --border: rgba(212, 175, 55, 0.15);
-    --radius: 16px;
-    --radius-sm: 10px;
-    --transition: 0.3s ease;
-}
-
+/* Variables are inherited from globals.css :root */
 /* Login Screen */
 .loginScreen {
     min-height: 100vh;
