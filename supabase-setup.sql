@@ -24,3 +24,8 @@ CREATE POLICY "Allow public inserts" ON registrations
 CREATE POLICY "Allow public reads" ON registrations
   FOR SELECT TO anon
   USING (true);
+
+-- Allow deletes from anon role (admin delete via API)
+CREATE POLICY "Allow public deletes" ON registrations
+  FOR DELETE TO anon
+  USING (true);
