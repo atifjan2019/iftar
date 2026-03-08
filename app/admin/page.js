@@ -122,6 +122,26 @@ export default function AdminPage() {
         )
         : allRegistrations;
 
+    // Delete registration
+    const handleDelete = async (ticketId, name) => {
+        if (!confirm(`Are you sure you want to delete ${name}'s registration (${ticketId})?`)) return;
+        try {
+            const res = await fetch('/api/admin/delete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password: storedPassword, ticketId }),
+            });
+            const data = await res.json();
+            if (data.success) {
+                loadData(storedPassword);
+            } else {
+                alert(data.message || 'Failed to delete');
+            }
+        } catch {
+            alert('Failed to delete. Please try again.');
+        }
+    };
+
     // Export CSV
     const exportCSV = () => {
         if (allRegistrations.length === 0) return;
@@ -230,6 +250,7 @@ export default function AdminPage() {
                                     <th>Email</th>
                                     <th>Ticket ID</th>
                                     <th>Registered</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -247,6 +268,15 @@ export default function AdminPage() {
                                             <td>{escapeHtml(reg.email)}</td>
                                             <td><span className={styles.ticketBadge}>{escapeHtml(reg.ticketId)}</span></td>
                                             <td style={{ color: 'var(--text-muted)' }}>{date}</td>
+                                            <td>
+                                                <button
+                                                    className={styles.btnDelete}
+                                                    onClick={() => handleDelete(reg.ticketId, reg.name)}
+                                                    title="Delete registration"
+                                                >
+                                                    🗑️
+                                                </button>
+                                            </td>
                                         </tr>
                                     );
                                 })}

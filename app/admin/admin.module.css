@@ -328,6 +328,22 @@
     color: var(--text-muted);
 }
 
+.btnDelete {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.2);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.3s ease;
+    line-height: 1;
+}
+
+.btnDelete:hover {
+    background: rgba(231, 76, 60, 0.25);
+    transform: scale(1.1);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .statsGrid {
