@@ -22,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en" dir="ltr">
-            <body className={`${inter.variable} ${amiri.variable}`}>{children}</body>
+            <body className={`${inter.variable} ${amiri.variable}`} suppressHydrationWarning>{children}</body>
         </html>
     );
 }
